@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: OLX-GATEWAY
+  cloud:
+    gateway:
+      routes:
+        - id: ADVERTISE-SERVICE
+          uri: lb://ADVERTISE-SERVICE
+          predicates:
+            - Path=/olx/advertise/**
+        - id: AUTH-SERVICE
+          uri: lb://AUTH-SERVICE
+          predicates:
+            - Path=/olx/user/**
+
+
+
+server:
+  port: 9191
+  
+
+    
+eureka:
+    instance:
+      prefer-ip-address: true
+      hostname: localhost
+    client:
+      register-with-eureka: true
+      fetch-registry: true
+      
