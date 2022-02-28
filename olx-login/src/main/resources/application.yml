@@ -1,0 +1,50 @@
+Server:
+   port: 9000
+   
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+        - "*"  
+ 
+spring: 
+    mvc:
+     pathmatch:
+          matching-strategy: ant-path-matcher
+     
+    zipkin:
+      base-url: http://localhost:9411
+  
+    config:
+      import: configserver:http://localhost:8888
+    
+    datasource:
+      url: jdbc:mysql://localhost:3306/olx
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      username: root
+      password: Muskan@123
+    jpa:
+      hibernate.ddl-auto: update
+      properties:
+         hibernate:
+            dialect: org.hibernate.dialect.MySQL8Dialect
+    application:
+       name: auth-service
+  
+    show-sql: true
+    
+    
+    data.mongodb:
+         host: localhost
+         port: 27017
+         database: logoutdb
+eureka:
+  instance:
+    prefer-ip-address: true
+    hostname: localhost
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+         
+          
