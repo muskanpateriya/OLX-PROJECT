@@ -1,0 +1,23 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: configuration-server
+    
+  cloud:
+    config:
+      git:
+        uri: https://github.com/muskanpateriya/olx-config
+        default-label: main
+        username: muskanpateriya
+        password: Muskan@0425
+        clone-on-start: true
+      server:
+        bootstrap: true
+        
+  main:
+    allow-circular-references: true
+  
+  profiles:
+    active: native  
